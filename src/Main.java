@@ -1,5 +1,8 @@
+import ui.ConsoleMenu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Project setup is working!");
+        ConsoleMenu menu = new ConsoleMenu();
+        menu.start();
     }
 }
