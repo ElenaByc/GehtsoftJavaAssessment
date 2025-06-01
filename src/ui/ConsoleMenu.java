@@ -1,12 +1,12 @@
 package ui;
 
 public class ConsoleMenu {
-    private final UserInputHandler userInputHandler = new UserInputHandler();
+    private final ConsoleIO consoleIO = new ConsoleIO();
 
     public void start() {
         boolean running = true;
         while (running) {
-            int choice = userInputHandler.mainMenuSelection();
+            int choice = consoleIO.mainMenuSelection();
             switch (choice) {
                 case 1:
                     System.out.println("1");
@@ -18,13 +18,14 @@ public class ConsoleMenu {
                     System.out.println("3");
                     break;
                 case 4:
-                    System.out.println("\nProgram exiting. Have a great day!\n");
+                    consoleIO.displayMessage("\nProgram exiting. Have a great day!\n");
                     running = false;
                     break;
                 default:
-                    userInputHandler.printInvalidSelectionMessage();
+                    consoleIO. displayInvalidSelectionMessage();
                     break;
             }
         }
+        consoleIO.closeScanner();
     }
 }

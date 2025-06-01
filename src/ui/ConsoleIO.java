@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-public class UserInputHandler {
+public class ConsoleIO {
     private final Scanner scanner = new Scanner(System.in);
 
     public int mainMenuSelection() {
@@ -32,16 +32,25 @@ public class UserInputHandler {
                 if (number >= min && number <= max) {
                     return number;
                 } else {
-                    printInvalidSelectionMessage();
+                    displayInvalidSelectionMessage();
                 }
             } catch (NumberFormatException e) {
-                printInvalidSelectionMessage();
+                displayInvalidSelectionMessage();
             }
         }
     }
 
-    public void printInvalidSelectionMessage() {
+    public void displayInvalidSelectionMessage() {
         System.out.println("Invalid selection, please select from the available options.");
     }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void closeScanner() {
+        scanner.close();
+    }
+
 
 }
