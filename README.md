@@ -1,4 +1,5 @@
-# Gehtsoft Technical Assessment - Console Application
+# Gehtsoft Technical Assessment
+## Console Application: Caesar Cipher & Expression Evaluator
 
 This project is a console-based application developed as a technical assessment. 
 It features a main menu allowing users to interact with various functionalities, 
@@ -34,10 +35,10 @@ Currently Implemented:
     * Encapsulates `System.in` and `System.out` interactions, promoting clean separation between UI and business logic.
     * Includes a method (`getConfirmation`) to prompt users whether they wish to continue after an operation. 
 
-* **Caesar Cipher Placeholder (`CaesarCipher`):**
+* **Caesar Cipher (`CaesarCipher`):**
     * Dedicated class for Caesar Cipher operations.
     * Contains `encrypt(String text, int shift)` and `decrypt(String text, int shift)` methods.
-    * **Current Status:** These methods are currently defined but not fully implemented. The encryption and decryption logic will be added in future versions.
+    * The application fully supports Caesar cipher encryption and decryption for text entered directly via the keyboard. Users can specify a shift value and get the encrypted or decrypted result. Both English and Russian alphabets are supported, maintaining letter case and preserving non-alphabetic characters. Reading input text from file and decryption without a known shift value are not yet implemented.
 
 
 * **Arithmetic Expression Evaluator Placeholder (`ExpressionEvaluator`):**
@@ -95,8 +96,8 @@ This application can be run directly from an IDE like IntelliJ IDEA or compiled 
 
 ## Future Enhancements
 
-* **Full Caesar Cipher Implementation:** Implement the actual encryption and decryption algorithms.
-* **Input Source Flexibility:** Allow users to choose between typing text directly or providing a file path for input.
+* **Loading text from a file**  for encryption/decryption is currently under development.
+* **Decryption without a known shift value** (e.g., via brute-force or frequency analysis) will be added in a future update.
 * **Robust Expression Evaluation:** Implement a parser and evaluator for arithmetic expressions, handling various operators, parentheses, and error cases.
 * **Error Handling:** Enhance error handling for file operations and invalid expressions.
 * **Unit Testing:** Implement unit tests for the `CaesarCipher` (encryption/decryption) and `ExpressionEvaluator` components

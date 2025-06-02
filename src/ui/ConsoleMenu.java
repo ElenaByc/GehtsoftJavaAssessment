@@ -52,7 +52,6 @@ public class ConsoleMenu {
         int shift = consoleIO.getShiftValue("Enter the shift value (integer): ");
         String resultText = caesarCipher.encrypt(textToEncrypt, shift);
         consoleIO.displayCaesarOperationResult(textToEncrypt, shift, resultText, "Caesar Cipher Encryption");
-        consoleIO.displayMessage("Full logic for Caesar Cipher Encryption is under development.");
     }
 
     private void handleCaesarDecryption() {
@@ -72,7 +71,6 @@ public class ConsoleMenu {
         String resultText = caesarCipher.decrypt(textToDecrypt, shift);
 
         consoleIO.displayCaesarOperationResult(textToDecrypt, shift, resultText, "Caesar Cipher Decryption");
-        consoleIO.displayMessage("Full logic for Caesar Cipher Decryption is under development.");
     }
 
     private void handleExpressionEvaluation() {
