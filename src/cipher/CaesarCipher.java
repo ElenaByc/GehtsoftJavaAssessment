@@ -35,8 +35,7 @@ public class CaesarCipher {
     }
 
     public String decrypt(String text, int shift) {
-        System.out.println("DEBUG: Decrypting '" + text + "' with shift " + shift);
-        return text;
+        return encrypt(text, -shift); // Apply the negative shift to reverse encryption
     }
 
     private String getAlphabet(char ch) {
