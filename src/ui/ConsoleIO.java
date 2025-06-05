@@ -2,6 +2,11 @@ package ui;
 
 import java.util.Scanner;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class ConsoleIO {
     private final Scanner scanner = new Scanner(System.in);
 
@@ -11,6 +16,7 @@ public class ConsoleIO {
     }
 
     private void displayMenu() {
+        System.out.println();
         System.out.println("=".repeat(42));
         System.out.println(" Welcome to Gehtsoft Technical Assessment");
         System.out.println("=".repeat(42));
@@ -41,7 +47,7 @@ public class ConsoleIO {
     }
 
     public boolean getConfirmation(String prompt) {
-        System.out.print(prompt);
+        System.out.print(prompt + " (y/n): ");
         String input = scanner.nextLine().trim().toLowerCase();
         return input.equals("y");
     }
@@ -64,6 +70,24 @@ public class ConsoleIO {
     public String readText(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine().trim();
+    }
+
+    public String readTextFromFile(String prompt) {
+        System.out.print(prompt);
+        String filePath = scanner.nextLine().trim();
+        try {
+            Path path = Paths.get(filePath);
+            String content = Files.readString(path);
+            System.out.println("File read successfully.");
+            if (content.isEmpty()) {
+                boolean proceed = getConfirmation("Warning: File is empty. Do you want to proceed with empty input text?");
+                return proceed ? content : null;
+            }
+            return content;
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+            return null;
+        }
     }
 
     public int getShiftValue(String prompt) {
