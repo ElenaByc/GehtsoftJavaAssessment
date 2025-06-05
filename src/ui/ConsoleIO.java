@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class ConsoleIO {
 
     public int mainMenuSelection() {
         displayMenu();
-        return getIntegerWithinRange("Enter your selection: ", 1, 4);
+        return getIntegerWithinRange("Enter your selection: ", 1, 5);
     }
 
     private void displayMenu() {
@@ -23,9 +24,10 @@ public class ConsoleIO {
         System.out.println("Please select from the following options:");
         System.out.println();
         System.out.println("1. Caesar Cipher Encryption");
-        System.out.println("2. Caesar Cipher Decryption");
-        System.out.println("3. Arithmetic Expression Evaluation");
-        System.out.println("4. Exit");
+        System.out.println("2. Caesar Cipher Decryption (known shift)");
+        System.out.println("3. Caesar Cipher Brute-force Decryption (unknown shift)");
+        System.out.println("4. Arithmetic Expression Evaluation");
+        System.out.println("5. Exit");
         System.out.println();
     }
 
@@ -91,7 +93,7 @@ public class ConsoleIO {
     }
 
     public int getShiftValue(String prompt) {
-        int shift = 0;
+        int shift;
         while (true) {
             System.out.print(prompt);
             try {
@@ -114,6 +116,21 @@ public class ConsoleIO {
         System.out.println("Input Text: " + inputText);
         System.out.println("Shift Value: " + shiftValue);
         System.out.println("Result: " + resultText + "\n");
+    }
+
+    public void displayCaesarBruteForceDecryption(
+            String inputText,
+            Map<String, Integer> decryptedOptions
+    ) {
+        System.out.println("\n---  Caesar Cipher Brute-force Decryption Results ---");
+        System.out.println("Input Text: " + inputText);
+        System.out.println("-".repeat(30));
+        System.out.println(" Possible decrypted versions:");
+        System.out.println("-".repeat(30));
+        for (var entry : decryptedOptions.entrySet()) {
+            System.out.printf("Shift %2d:  %s%n", entry.getValue(), entry.getKey());
+        }
+        System.out.println();
     }
 
     public void closeScanner() {

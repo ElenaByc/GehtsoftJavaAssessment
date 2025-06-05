@@ -22,9 +22,12 @@ public class ConsoleMenu {
                     operationCompletedSuccessfully = handleCaesarDecryption();
                     break;
                 case 3:
-                    operationCompletedSuccessfully = handleExpressionEvaluation();
+                    operationCompletedSuccessfully = handleCaesarBruteForceDecryption();
                     break;
                 case 4:
+                    operationCompletedSuccessfully = handleExpressionEvaluation();
+                    break;
+                case 5:
                     exitApplication();
                     break;
             }
@@ -61,6 +64,19 @@ public class ConsoleMenu {
         int shift = consoleIO.getShiftValue("Enter the shift value (integer): ");
         String resultText = caesarCipher.decrypt(textToDecrypt, shift);
         consoleIO.displayCaesarOperationResult(textToDecrypt, shift, resultText, "Caesar Cipher Decryption");
+        return true;
+    }
+
+    private boolean handleCaesarBruteForceDecryption() {
+        consoleIO.displayMessage("\n--- Brute-force Caesar Cipher Decryption ---");
+        String textToDecrypt = getInputText("decrypt");
+        if (textToDecrypt == null) {
+            // Error reading file or file is empty. Returning to the main menu.
+            return false;
+        }
+        consoleIO.displayMessage("\nAttempting all possible shifts...");
+        var decryptedOptions = caesarCipher.bruteForceDecrypt(textToDecrypt);
+        consoleIO.displayCaesarBruteForceDecryption(textToDecrypt, decryptedOptions);
         return true;
     }
 
