@@ -45,7 +45,9 @@ Currently Implemented:
     * Dedicated class for Caesar Cipher operations.
     * Contains `encrypt(String text, int shift)`, `decrypt(String text, int shift)`, and `bruteForceDecrypt(String text)` methods.
     * The application fully supports Caesar cipher encryption and decryption for text entered directly via the keyboard or loaded from a file. Users can specify a shift value and get the encrypted or decrypted result. Both English and Russian alphabets are supported, maintaining letter case and preserving non-alphabetic characters. 
-    * Decryption without a known shift value: Implements a brute-force approach to decrypt Caesar Cipher texts by trying all possible shift combinations. It provides unique deciphered options, associating each with its smallest positive shift value for clarity.
+    * Decryption without a known shift value: Implements a brute-force approach to decrypt Caesar Cipher texts by trying all possible shift combinations. It provides unique deciphered options, associating each with its smallest positive shift value for clarity. 
+    * Basic Test Coverage: Includes simple, manual tests for encryption, decryption, and brute-force decryption specifically for the `CaesarCipher` class, verifying its core functionality.
+
 
 * **Arithmetic Expression Evaluator Placeholder (`ExpressionEvaluator`):**
     * Dedicated class for arithmetic expression evaluation.
@@ -62,6 +64,7 @@ The project follows a modular package structure:
     * `ui`: Contains classes related to user interface and console interaction (`ConsoleMenu`, `ConsoleIO`).
     * `cipher`: Contains classes related to cryptographic operations (`CaesarCipher`).
     * `evaluator`: Contains classes related to arithmetic expression evaluation (`ExpressionEvaluator`).
+* `test`: Contains classes for testing the application's functionality.
   
 <p align="right"><a href="#contents">Navigate to Contents</a></p>
   
@@ -97,6 +100,19 @@ This application can be run directly from an IDE like IntelliJ IDEA or compiled 
     ```bash
     java -cp out Main
     ```
+4. **How to Run Tests:**
+    * Navigate to the root of the project.
+    * Compile the source files (including tests):
+        ```bash
+        javac -d out src/**/*.java test/**/*.java
+        ```
+      (This command compiles all `.java` files from `src` and `test` directories into the `out` directory)
+
+    * Run the test application:
+        ```bash
+        java -cp out CaesarCipherTest
+        ```
+
 
 <p align="right"><a href="#contents">Navigate to Contents</a></p>
 
@@ -104,6 +120,7 @@ This application can be run directly from an IDE like IntelliJ IDEA or compiled 
 
 * **Robust Expression Evaluation:** Implement a parser and evaluator for arithmetic expressions, handling various operators, parentheses, and error cases.
 * **Error Handling:** Enhance error handling for file operations and invalid expressions.
-* **Unit Testing:** Implement unit tests for the `CaesarCipher` (encryption/decryption) and `ExpressionEvaluator` components
+* **Comprehensive Testing:** Expand unit tests for the `CaesarCipher` class to cover more edge cases, and implement full unit tests for the `ExpressionEvaluator` component.
+
 
 <p align="right"><a href="#contents">Navigate to Contents</a></p>
