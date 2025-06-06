@@ -1,5 +1,9 @@
 import cipher.CaesarCipher;
 
+/**
+ * The {@code CaesarCipherTest} class contains basic tests for the
+ * {@code CaesarCipher} class's encryption, decryption, and brute-force functionalities.
+ */
 public class CaesarCipherTest {
     public static void main(String[] args) {
         CaesarCipher cipher = new CaesarCipher();
