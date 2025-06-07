@@ -114,6 +114,43 @@ public class ConsoleMenu {
     }
 
     /**
+     * Handles the arithmetic expression evaluation process. It takes an expression,
+     * evaluates it using the {@code ExpressionEvaluator}, and displays the result to the console.
+     *
+     * @return {@code true} if the operation completed successfully.
+     */
+    private boolean handleExpressionEvaluation() {
+        consoleIO.displayMessage("\n--- Arithmetic Expression Evaluation selected ---");
+        String expression = getInputText("evaluate");
+
+        // If input was cancelled (e.g., empty file not confirmed), return to main menu
+        if (expression == null) {
+            return false;
+        }
+
+        try {
+            double resultValue = expressionEvaluator.evaluate(expression);
+            consoleIO.displayMessage("Expression: " + expression);
+            consoleIO.displayMessage("Result: " + resultValue);
+        } catch (IllegalArgumentException e) {
+            consoleIO.displayMessage("Error: Invalid expression. " + e.getMessage());
+            // Return false if there was an error, so as not to offer "Continue?" immediately after an error
+            return false;
+
+        } catch (ArithmeticException e) {
+            // Division by zero
+            consoleIO.displayMessage("Error: " + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            // Catch any other unexpected errors
+            consoleIO.displayMessage("An unexpected error occurred: " + e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Prompts the user to select an input source (keyboard or file) and reads the text for a given operation.
      *
      * @param operation A string describing the operation (e.g., "encrypt", "decrypt", "brute-force decrypt")
@@ -131,24 +168,6 @@ public class ConsoleMenu {
             inputText = consoleIO.readTextFromFile("Enter the full path to the text file: ");
         }
         return inputText;
-    }
-
-    /**
-     * Handles the arithmetic expression evaluation process. It takes an expression,
-     * evaluates it using the {@code ExpressionEvaluator}, and displays the result to the console.
-     *
-     * @return {@code true} if the operation completed successfully.
-     */
-    private boolean handleExpressionEvaluation() {
-        consoleIO.displayMessage("\n--- Arithmetic Expression Evaluation selected ---");
-
-        String testExpression = "2+3*4";
-        double resultValue = expressionEvaluator.evaluate(testExpression);
-
-        consoleIO.displayMessage("Expression: " + testExpression);
-        consoleIO.displayMessage("Result: " + resultValue);
-        consoleIO.displayMessage("Full logic for Expression Evaluation is under development.");
-        return true;
     }
 
     /**
